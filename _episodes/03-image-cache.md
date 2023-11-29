@@ -69,12 +69,18 @@ Total space used: 1.71 GiB
 ~~~
 {: .output}
 
-This provides us with some more useful information about the actual images stored in the cache. In the `TYPE` column we can see that our image type is `library` because it's a `SIF` image that has been pulled from the Container Library. 
+This provides us with some more useful information about the actual images stored in the cache. There are a few different types of item that are cached here, `blob`, `oci-tmp` and `library`. 
+
+The most numerous type, `blob`, is a type of file that are combined to create a final container image. We most frequently see them when pulling from a `docker://` source, and they can usually be removed unless you are pulling many closely related images that may share blobs. These blobs are combined into an SIF format image that will be listed as the type `oci-tmp`. So all of the blobs and the oci-tmp entry are related to the ROOT image that we just downloaded.
+
+Any other cached item that isn't a `blob` or an image in `oci-tmp` will be a SIF format image that is named according to where it was downloaded from. So the remaining entry in our list has the image type is `library` because it's a SIF image that has been pulled from the Container Library. 
 
 > ## Cleaning the Apptainer image cache
 > We can remove images from the cache using the `apptainer cache clean` command. Running the command without any options will display a warning and ask you to confirm that you want to remove everything from your cache.
 >
 > You can also remove specific images or all images of a particular type. Look at the output of `apptainer cache clean --help` for more information.
+>
+> One of the more common operations might be to clean out all of the blobs that you no longer need, which you can accomplish via: `apptainer cache clean -T blob`
 {: .callout}
 
 > ## Cache location
