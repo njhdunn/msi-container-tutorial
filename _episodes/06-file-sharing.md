@@ -13,7 +13,6 @@ keypoints:
 - "Some paths are mounted by default by Apptainer."
 - "Additional directories to bind can be defined using the `--bind` option or the environment variable `$SINGULARITY_BIND`."
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/E-vlXHEsacE?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #5 - Sharing files between host and container"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 One of the key features about containers is the isolation of the processes running inside them. It means,
 files on the host system are not accessible within the container.
@@ -37,7 +36,7 @@ by the system admin in the Apptainer configuration. By default, Apptainer binds:
 * System-defined paths: `/tmp`, `/proc`, `/dev`, etc.
 Since this is defined in the configuration, it may vary from site to site.
 
-Let's use for example the container built during the last chapter called `rootInUbuntu.sif`. Take a look at your
+Let's use for example the container built during the last chapter called `hmmerInUbuntu.sif`. Take a look at your
 current directory
 ```bash
 pwd
@@ -48,7 +47,7 @@ pwd
 {: .output}
 Open a shell inside the container and try to use `pwd` again
 ```bash
-apptainer shell rootInUbuntu.sif
+apptainer shell hmmerInUbuntu.sif
 
 Apptainer> pwd
 ```
@@ -69,7 +68,7 @@ mounts automatically your `$HOME` inside the container.
 
 Try this time with
 ```bash
-apptainer shell --no-mount home rootInUbuntu.sif
+apptainer shell --no-mount home hmmerInUbuntu.sif
 ```
 and you will notice that `$HOME` is not mounted anymore
 ```bash
@@ -103,7 +102,7 @@ echo "MUONMASS=105.66 MeV" > $HOME/mydata/muonMass.txt
 It is very, very important in your analysis workflow to know the mass of the muon, right? It may have sense to put the data
 in a high-level directory within the container, like `/data`
 ```bash
-apptainer shell --bind $HOME/mydata:/data rootInUbuntu.sif
+apptainer shell --bind $HOME/mydata:/data hmmerInUbuntu.sif
 ```
 This will bind the directory `mydata/` from the host as `/data` inside the container:
 ```bash
@@ -121,9 +120,9 @@ i.e. using the syntax `source1:destination1,source2:destination2`.
 
 Also. If the destination is not specified, it will be set as equal as the source. For example
 ```bash
-apptainer shell --bind /cvmfs rootInUbuntu.sif
+apptainer shell --bind /scratch.global hmmerInUbuntu.sif
 ```
-Will mount `/cvmfs` inside the container. Try it!
+Will mount `/scratch.global` inside the container. Try it!
 
 > ## Binding directories with Docker-like syntax using `--mount`
 >
@@ -140,9 +139,9 @@ If the environment variable `$APPTAINER_BIND` is defined, apptainer will bind in
 the directories specified in the format `source`, with the destination being optional (in the same way as using
 `--bind`). For example:
 ```bash
-export SINGULARITY_BIND="/cvmfs"
+export SINGULARITY_BIND="/scratch.global"
 ```
-will bind CVMFS to all your Apptainer containers (`/cvmfs` must be available in the host, of course).
+will bind global scratch to all your Apptainer containers (`/scratch.global` must be available in the host, of course).
 
 You can also bind multiple directories using commas between each `source:destination`.
 
