@@ -152,6 +152,7 @@ Options directing output:
   --noali            : don't output alignments, so output is smaller
   --notextw          : unlimit ASCII text output line width
   --textw <n>        : set max width of ASCII text output lines  [120]  (n>=120)
+...
 ~~~
 {: .output}
 
