@@ -119,7 +119,7 @@ From: ubuntu:20.04
 
 %post
     echo "Installing required packages..."
-    apt update && apt install -y wget git bash gcc gfortran g++ make file
+    apt update && apt install -y wget rsh-client build-essential
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
@@ -204,27 +204,24 @@ We can now try running a 2-process MPI run of our test program.
 
 > ## Undertake a parallel run of `mpitest` (general example)
 > 
-> You should be able to run the example using a command similar to the one shown below. However, if you are running on a cluster, you may need to write and submit a job submission script at this point to initiate running of the benchmark.
+> You should be able to run the example using a command similar to the one shown below. However, if you are not currently inside an interactive SLURM job, you may need to write and submit a job submission script at this point to initiate running of the benchmark.
+> 
+> Also note that due to a peculiarity of how we install OMPI at MSI, we will need to unset OPAL_PREFIX before running a hybrid OMPI+Apptainer job.
 >
 > ~~~
+> unset OPAL_PREFIX
 > $ mpirun -np 2 apptainer exec ompi_example.sif mpitest
 > ~~~
 > {: .language-bash}
 > 
 > > ## Expected output and discussion
 > > 
-> > As you can see in the mpirun command shown above, we have called `mpirun` on the host system and are passing to MPI the `apptainer` executable for which the parameters are the image file and any parameters we want to pass to the image's run script, in this case the path/name of the benchmark executable to run.
+> > As you can see in the mpirun command shown above, we have called `mpirun` on the host system and are passing to MPI the `apptainer` executable for which the parameters are the image file and any parameters we want to pass to the image's run script, in this case the path/name of the executable to run.
 > > 
-> > The following shows an example of the output you should expect to see. You should have latency values shown for message sizes up to 4MB.
 > > 
 > >~~~
-> > Rank 1 - About to run: /.../mpi/pt2pt/osu_latency
-> > Rank 0 - About to run: /.../mpi/pt2pt/osu_latency
-> > # OSU MPI Latency Test v5.6.2
-> > # Size          Latency (us)
-> > 0                       0.38
-> > 1                       0.34
-> > ...
+> > Hello, I am rank 1/2
+> > Hello, I am rank 0/2
 > > ~~~
 > > {: .output}
 > {: .solution}
