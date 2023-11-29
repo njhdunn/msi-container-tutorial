@@ -139,7 +139,7 @@ If the environment variable `$APPTAINER_BIND` is defined, apptainer will bind in
 the directories specified in the format `source`, with the destination being optional (in the same way as using
 `--bind`). For example:
 ```bash
-export SINGULARITY_BIND="/scratch.global"
+export APPTAINER_BIND="/scratch.global"
 ```
 will bind global scratch to all your Apptainer containers (`/scratch.global` must be available in the host, of course).
 
