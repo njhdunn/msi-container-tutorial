@@ -105,7 +105,7 @@ In the same directory, save the following definition file content to a `.def` fi
 
 ~~~
 Bootstrap: docker
-From: ubuntu:18.04
+From: ubuntu:20.04
 
 %files
     mpitest.c /opt
@@ -119,12 +119,12 @@ From: ubuntu:18.04
 
 %post
     echo "Installing required packages..."
-    apt-get update && apt-get install -y wget git bash gcc gfortran g++ make file
+    apt update && apt install -y wget git bash gcc gfortran g++ make file
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
     export OMPI_VERSION=4.1.5
-    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2"
+    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
     mkdir -p /tmp/ompi
     mkdir -p /opt
     # Download
@@ -144,11 +144,11 @@ From: ubuntu:18.04
 
 A quick overview of what the above definition file is doing:
 
- - The image is being bootstrapped from the `ubuntu:18.04` Docker image.
+ - The image is being bootstrapped from the `ubuntu:20.04` Docker image.
  - In the `%files` section: The MPI "Hello world" test is copied from the current directory into the `/opt` directory within the image.
  - In the `%environment` section: Set a couple of environment variables that will be available within all containers run from the generated image.
  - In the `%post` section:
-   - Ubuntu's `apt-get` package manager is used to update the package directory and then install the compilers and other libraries required for the OMPI build.
+   - Ubuntu's `apt` package manager is used to update the package directory and then install the compilers and other libraries required for the OMPI build.
    - The OMPI .tar.bz2 file is extracted and the configure, build and install steps are run. 
    - The environment is set up to use the newly installed OMPI, and we build our "Hello world" example.
 
