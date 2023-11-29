@@ -1,7 +1,5 @@
 # Reproducible computational environments using containers: Introduction to Singularity
 
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
-
 This lesson provides an introduction to the [Singularity container platform](https://github.com/hpcng/singularity).
 
 It covers the basics of using Singularity and creating containers:
@@ -32,8 +30,14 @@ Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%
 
 Current maintainers of this lesson are
 
-* [Jeremy Cohen](https://github.com/jcohen02)
-* [Andy Turner](https://github.com/aturner-epcc)
+* [Nick Dunn](dunn0404@umn.edu)
+
+## Sources
+
+Content in this lesson adapted from:
+
+- [Reproducible computational environments using containers: Introduction to Singularity](https://carpentries-incubator.github.io/singularity-introduction/)
+- [Introduction to Apptainer/Singularity](https://hsf-training.github.io/hsf-training-singularity-webpage/index.html)
 
 ## Authors
 

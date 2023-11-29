@@ -13,10 +13,11 @@ This lesson will introduce Singularity from scratch showing you how to run a sim
 {% comment %} This is a comment in Liquid {% endcomment %}
 
 > ## Prerequisites
+> * Basic knowledge of the Unix Shell, e.g., from the [carpentry course](https://swcarpentry.github.io/shell-novice/).
 > There are two core elements to this lesson - _running containers_ and _building containers_. The prerequisites are slightly different for each and are explained below.
 >
 > **Running containers:** (episodes 1-5 and 8)
-> - Access to a local or remote platform with Singularity pre-installed and accessible to you as a user (i.e. no administrator/root access required).
+> - Access to a local or remote platform with Apptainer/Singularity pre-installed and accessible to you as a user (i.e. no administrator/root access required).
 >   - If you are attending a taught version of this material, it is expected that the course organisers will provide access to a platform (e.g. an institutional HPC cluster) that you can use for these sections of the material.
 > - The platform you will be using should also have MPI installed (required for episode 8).
 >
@@ -29,7 +30,7 @@ This lesson will introduce Singularity from scratch showing you how to run a sim
 >
 > - Access to a local or remote Linux-based system on which you have administrator (root) access and can install the Singularity software.
 >
-> **Please note that the version of Singularity used in this part of the course is _version 3.5.3_ which was the latest stable release at the time of writing.** If you are installing Singularity on your own system for use in the course, you are recommneded to install version 3.5.3.
+> ** For this training we recommend Apptainer >= 1.0 or Singularity >= 3.5. Older versions may not have some of the features or behave differently
 {: .prereq}
 
 {% include links.md %}
