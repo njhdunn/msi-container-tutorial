@@ -20,8 +20,8 @@ While Apptainer doesn't have a local image repository in the same way as, for in
 If you delete a local `.sif` image that you have pulled from a remote image repository and then pull it again, if the image is unchanged from the version you previously pulled, you will be given a copy of the image file from your local cache rather than the image being downloaded again from the remote source. This removes unnecessary network transfers and is particularly useful for large images which may take some time to transfer over the network. To demonstrate this, remove the `hello-world.sif` file stored in your `test` directory and then issue the `pull` command again:
 
 ~~~
-$ rm hello-world.sif
-$ apptainer pull hello-world.sif shub://vsoch/hello-world
+$ rm centos7-devel_latest.sif
+$ apptainer pull library://gmk/default/centos7-devel
 ~~~
 {: .language-bash}
 
@@ -30,7 +30,7 @@ INFO:    Use image from cache
 ~~~
 {: .output}
 
-As we can see in the above output, the image has been returned from the cache and we don't see the output that we saw previously showing the image being downloaded from Singularity Hub.
+As we can see in the above output, the image has been returned from the cache and we don't see the output that we saw previously showing the image being downloaded from the Container Library.
 
 How do we know what is stored in the local cache? We can find out using the `apptainer cache` command:
 
@@ -40,8 +40,8 @@ $ apptainer cache list
 {: .language-bash}
 
 ~~~
-There are 1 container file(s) using 62.65 MB and 0 oci blob file(s) using 0.00 kB of space
-Total space used: 62.65 MB
+There are 2 container file(s) using 953.56 MiB and 7 oci blob file(s) using 795.96 MiB of space
+Total space used: 1.71 GiB
 ~~~
 {: .output}
 
@@ -54,14 +54,22 @@ $ apptainer cache list -v
 
 ~~~
 NAME                     DATE CREATED           SIZE             TYPE
-hello-world_latest.sif   2020-04-03 13:20:44    62.65 MB         shub
+3153aa388d026c26a2235e   2023-11-29 11:43:11    28.17 MiB        blob
+4f4fb700ef54461cfa0257   2023-11-29 11:43:10    0.03 KiB         blob
+a92e1499ab2116def52960   2023-11-29 11:43:20    1.01 KiB         blob
+adcfc5ae21e02d2a4e0611   2023-11-29 11:43:20    3.99 KiB         blob
+cd4f73f3be7df86c541481   2023-11-29 11:43:20    600.84 MiB       blob
+e9d9ea00e81a9ebf9a6a5d   2023-11-29 11:43:13    166.94 MiB       blob
+fc99e5b541a5d800e7a738   2023-11-29 11:43:11    0.37 KiB         blob
+sha256.740fa5a3d1a2019   2023-11-29 11:42:32    296.19 MiB       library
+3dd56175ed0c777d5dda16   2023-11-29 11:44:39    657.37 MiB       oci-tmp
 
-There are 1 container file(s) using 62.65 MB and 0 oci blob file(s) using 0.00 kB of space
-Total space used: 62.65 MB
+There are 2 container file(s) using 953.56 MiB and 7 oci blob file(s) using 795.96 MiB of space
+Total space used: 1.71 GiB
 ~~~
 {: .output}
 
-This provides us with some more useful information about the actual images stored in the cache. In the `TYPE` column we can see that our image type is `shub` because it's a `SIF` image that has been pulled from Singularity Hub. 
+This provides us with some more useful information about the actual images stored in the cache. In the `TYPE` column we can see that our image type is `library` because it's a `SIF` image that has been pulled from the Container Library. 
 
 > ## Cleaning the Apptainer image cache
 > We can remove images from the cache using the `apptainer cache clean` command. Running the command without any options will display a warning and ask you to confirm that you want to remove everything from your cache.
@@ -71,4 +79,11 @@ This provides us with some more useful information about the actual images store
 
 > ## Cache location
 > By default, Apptainer uses `$HOME/.apptainer/cache` as the location for the cache. You can change the location of the cache by setting the `APPTAINER_CACHEDIR` environment variable to the cache location you want to use.
+>
+> The labels in the `TYPE` column of the cache correspond to subdirectories of the Apptainer cache, and you can get more information about a specific entry by using `apptainer inspect` on the a specific file. For instance, if we want to inspect the `library` entry from the above output, we could run:
+>
+> ~~~
+> $ apptainer inspect ~/.apptainer/cache/library/sha256.740fa5a3d1a2019*
+> ~~~
+> {: .language-bash}
 {: .callout}
