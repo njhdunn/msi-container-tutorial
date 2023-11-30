@@ -25,7 +25,7 @@ In the most basic case, including Apptainer in your SLURM job won't look very di
 #SBATCH --mem=10g
 #SBATCH --tmp=10g
 
-module load singularity
+module load apptainer
 apptainer exec ~/hmmerInUbuntu.sif nhmmer -h
 ```
 
