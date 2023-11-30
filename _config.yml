@@ -7,10 +7,10 @@
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: "incubator"   # "swc" in future
+ carpentry: "swc"   # "swc" in future
 
 # Overall title for pages.
-title: "Reproducible computational environments using containers: Introduction to Singularity"
+title: "Reproducible computational environments using containers: Introduction to Apptainer/Singularity"
 
 # Life cycle stage of the lesson
 # See this page for more details: https://cdh.carpentries.org/the-lesson-life-cycle.html
@@ -30,7 +30,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "jeremy.cohen@imperial.ac.uk"
+email: "dunn0404@umn.edu"
 
 # Sites.
 amy_site: "https://amy.carpentries.org/"
