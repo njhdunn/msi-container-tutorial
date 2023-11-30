@@ -119,6 +119,10 @@ Found 15 containers for 'centos7'
 ~~~
 {: .output}
 
+> ## What if the search times out?
+> It is fairly common for the no-login access to the Sylabs cloud to take a while to respond, and possible time out before the search can complete. In these cases, you can get at the same information in a web browser by [searching their library website](https://cloud.sylabs.io/library)
+{: .callout}
+
 Downloading an image from the Container Library is pretty straightforward:
 ```bash
 apptainer pull library://gmk/default/centos7-devel
