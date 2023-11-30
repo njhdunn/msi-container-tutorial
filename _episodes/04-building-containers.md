@@ -85,8 +85,7 @@ As an example, let's create a container with hmmer 3.4 available using the `myUb
 First, we need to install the development tools (remember that in this interactive session we are superuser):
 ```bash
 Apptainer> apt update
-Apptainer> apt install build-essential
-Apptainer> apt install wget
+Apptainer> apt install build-essential wget
 ```
 Where `apt` is the [package manager used in Debian distributions](https://en.wikipedia.org/wiki/APT_(software))
 (like Ubuntu).
