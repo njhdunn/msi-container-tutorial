@@ -17,8 +17,14 @@ keypoints:
 - Bind outside directories with `--bind`
 ---
 
-# Apptainer is a Module at MSI
-MSI provides a modulefile for Singularity and Apptainer. Currently, this module is named `singularity` and you can load it by running:
+## Apptainer is a Module at MSI
+MSI provides a modulefile for Singularity and Apptainer. Currently we provide this module under both naming conventions, so you can load either of them by running the equivalent commands:
+
+```bash
+module load apptainer
+```
+
+or
 
 ```bash
 module load singularity
@@ -28,7 +34,7 @@ module load singularity
 > You may notice that the `singularity` and `apptainer` commands are available before you load the module. This is because due to some peculiarities with how this software interacts with the permissions model on our network storage, we are not always able to use a regular module-based deployment method. However, the module-based deployment is the intended workflow and you should get used to loading the module before using Apptainer.
 {: .callout}
 
-# The Apptainer Command Line Interface
+## The Apptainer Command Line Interface
 Apptainer provides a command-line interface (CLI) to interact with the containers. You can search, build or run
 containers in a single line.
 
@@ -48,29 +54,35 @@ You can check the available options and subcommands using `--help`:
 apptainer --help
 ```
 
-# Downloading Images
+## Downloading Images
 Apptainer/Singularity can store, search and retrieve images in registries.
 Images built by other users can be accessible using the CLI, can be pulled down, and become containers at runtime.
 
 Sylabs, the developers of one Singularity flavor, hosts a public image registry, the
 [Singularity Container Library](https://cloud.sylabs.io/library) where many user built images are available.
 
-The Linux Foundation flavor, Apptainer, does not point by default to the Sylab registry as previous versions did.
-You can change that running these commands (documented [here](https://apptainer.org/docs/user/main/endpoint.html#restoring-pre-apptainer-library-behavior)):
-```bash
-apptainer remote add --no-login SylabsCloud cloud.sycloud.io
-```
-~~~
-INFO:    Remote "SylabsCloud" added.
-~~~
-{: .output}
-```bash
-apptainer remote use SylabsCloud
-```
-~~~
-INFO:    Remote "SylabsCloud" now in use.
-~~~
-{: .output}
+
+> ## Configuring the Sylab Registry
+> The Linux Foundation flavor, Apptainer, does not point by default to the Sylab registry as previous versions did. MSI configures its Apptainer installation to provide the Sylab registry, but if you are running on other resources you may need to add it yourself.
+> You can do so by running these commands (documented [here](https://apptainer.org/docs/user/main/endpoint.html#restoring-pre-apptainer-library-behavior)):
+> ```bash
+> apptainer remote add --no-login SylabsCloud cloud.sycloud.io
+> ```
+> ~~~
+> INFO:    Remote "SylabsCloud" added.
+> ~~~
+> {: .output}
+> ```bash
+> apptainer remote use SylabsCloud
+> ```
+> ~~~
+> INFO:    Remote "SylabsCloud" now in use.
+> ~~~
+> {: .output}
+{: .callout}
+
+You can see the currently configured registries by running:
+
 ```bash
 apptainer remote list
 ```
@@ -85,7 +97,7 @@ SylabsCloud    cloud.sycloud.io     YES     NO      NO
 ~~~
 {: .output}
 
-Once you have setup a working registry you can use search and pull.
+Once you have confirmed (or setup) a working registry you can use search and pull.
 The command `search` lists containers of interest
 and shows information about groups and collections. For example:
 
@@ -122,11 +134,11 @@ and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in
 > ```
 {: .callout}
 
-# Running Containers
+## Running Containers
 There are several ways to interact with images and start containers. Here we will review how to initialize a shell
 environment and how to execute directly a command.
 
-## Initializing a shell and exiting it
+### Initializing a shell and exiting it
 The `shell` command initializes a new interactive shell inside the container.
 
 ```bash
@@ -159,7 +171,7 @@ or hitting `Ctrl + D`.
 Note that when exiting from the Apptainer image all the running processes are killed (stopped).
 Changes saved into bound directories are preserved. By default anything else in the container is lost (we'll see later about writable images).
 
-## Bound directories
+### Bound directories
 
 When an outside directory is accessible also inside Apptainer we say it is *bound*, or bind mounted. The path to access it
 may differ but anything you do to its content outside is visible inside and vice-versa.
@@ -199,7 +211,7 @@ bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_
 > {: .output}
 {: .callout}
 
-## Executing commands
+### Executing commands
 The command `exec` starts the container from a specified image and executes a command inside it.
 Let's use the official [Docker image of ROOT](https://hub.docker.com/r/rootproject/root) to start ROOT
 inside a container:
