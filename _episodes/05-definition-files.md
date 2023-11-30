@@ -22,7 +22,7 @@ The following recipe shows how to build a hello-world container, and run the con
 - Step 1: Open a text editor (e.g., nano, vim, or gedit in a graphical environment)
 
   ```bash
-  nano hello-world.def
+  vim hello-world.def
   ```
 
 - Step 2: Include the following script in the `hello-world.def` file to define the environment
@@ -78,19 +78,19 @@ BootStrap: docker
 From: ubuntu:20.04
 
 %post
-        apt update && apt install build-essential -y
-        apt install wget -y
+        apt update && apt install build-essential wget -y
 
         mkdir /opt/hmmer && cd /opt/hmmer
         wget http://eddylab.org/software/hmmer/hmmer.tar.gz
         tar zxf hmmer.tar.gz
-        ln -s hmmer*/ hmmer
-        cd hmmer
-        ./configure
+        ln -s hmmer*/ src
+        cd src
+        ./configure --prefix=/opt/hmmer/install
         make
+        make install
 
 %environment
-        export PATH=$PATH:/opt/hmmer/hmmer/src
+        export PATH=$PATH:/opt/hmmer/install/bin
 
 
 %runscript
