@@ -99,10 +99,11 @@ Here is a summary of the commands you will need (you may need to adjust link and
 Apptainer> mkdir /opt/hmmer && cd /opt/hmmer
 Apptainer> wget http://eddylab.org/software/hmmer/hmmer.tar.gz
 Apptainer> tar zxf hmmer.tar.gz
-Apptainer> ln -s hmmer*/ hmmer
-Apptainer> cd hmmer
-Apptainer> ./configure
+Apptainer> ln -s hmmer*/ src
+Apptainer> cd src
+Apptainer> ./configure --prefix /opt/hmmer/install
 Apptainer> make
+Apptainer> make install
 
 Apptainer> exit
 ```
@@ -118,7 +119,7 @@ few steps. Let's check by printing the help documentation for `nhmmer`:
 ```bash
 apptainer shell myUbuntu
 
-Apptainer> export PATH=$PATH:/opt/hmmer/hmmer/src
+Apptainer> export PATH=$PATH:/opt/hmmer/install/bin
 Apptainer> nhmmer -h
 ```
 ~~~
