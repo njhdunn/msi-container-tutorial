@@ -1,5 +1,5 @@
 ---
-title: "Apptainer/Singularity instances"
+title: "Apptainer instances"
 teaching: 60
 exercises: 10
 questions:
