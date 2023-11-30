@@ -17,7 +17,12 @@ keypoints:
 ---
 
 
-# Working with containers
+# Apptainer/Singularity
+Apptainer/Singularity is a container platform that allows software engineers and researchers to easily share their work with others by packaging and deploying their software applications in a portable and reproducible manner. 
+
+When you download a Singularity container image, you essentially receive a virtual computer disk that contains all of the necessary software, libraries and configuration to run one or more applications or undertake a particular task, e.g. to support a specific research project. 
+
+This saves you the time and effort of installing and configuring software on your own system or setting up a new computer from scratch, as you can simply run a Singularity container from the image and have a virtual environment that is identical to the one used by the person who created the image. 
 
 > ## Images and containers
 > We'll start with a brief note on the terminology used in this section of the course. We refer to both **_images_** and **_containers_**. What is the distinction between these two terms? 
@@ -27,7 +32,7 @@ keypoints:
 > A **_container_** is a virtual environment that is based on an image. That is, the files, applications, tools, etc that are available within a running container are determined by the image that the container is started from. It may be possible to start multiple container instances from an image. You could, perhaps, consider an image to be a form of template from which running container instances can be started.
 {: .callout}
 
-Containers are packages of software that encapsulates a system environment. An OS-level virtualization is delivered in a container, and any program running on it will use the contextualization isolated inside the container. They have the advantage that you can build a container on any system, your laptop for example, and then execute it anywhere as far as the platform compatible with the container is available.
+Container platforms like Singularity provide a convenient and consistent way to access and run software and tools. Singularity is increasingly widely used in the research community for supporting research projects as it allows users to isolate their software environments from the host operating system and can simplify tasks such as running multiple experiments simultaneously.
 
 Concepts such as reproducibility, preservation, and distribution are important in the HPC community, and the containers provide a solution totally compatible with such concepts:
 
@@ -35,16 +40,7 @@ Concepts such as reproducibility, preservation, and distribution are important i
 - A "legacy software" with binaries only available for an outdated OS can be executed inside a container.
 - All the necessary packages to process data can be easily distributed in containers, independently of the operating system available on the sites.
 
-
-> ## What about virtual machines?
-> Virtual Machines (VMs) provide the same isolation and reproducibility. However, they emulate the hardware, so they are computationally heavier to run, require bigger files when distributed and are less flexible than containers, that run only what you require to be different.
-{: .callout}
-
-
-# Apptainer/Singularity
-Apptainer/Singularity is a container platform that allows software engineers and researchers to easily share their work with others by packaging and deploying their software applications in a portable and reproducible manner. When you download a Singularity container image, you essentially receive a virtual computer disk that contains all of the necessary software, libraries and configuration to run one or more applications or undertake a particular task, e.g. to support a specific research project. This saves you the time and effort of installing and configuring software on your own system or setting up a new computer from scratch, as you can simply run a Singularity container from the image and have a virtual environment that is identical to the one used by the person who created the image. Container platforms like Singularity provide a convenient and consistent way to access and run software and tools. Singularity is increasingly widely used in the research community for supporting research projects as it allows users to isolate their software environments from the host operating system and can simplify tasks such as running multiple experiments simultaneously.
-
-Many solutions are available to work with containers, for example Docker, one of the most popular platforms. However, the enterprise-based container frameworks were motivated to provide micro-services, a solution that fits well in the models of the industry, where system administrators with root privilege install and run applications, each in its own container. This is not so compatible with the workflow in the High-Performance Computing (HPC) and High Throughput Computing (HTC), in which usually complex applications run exhaustively using all the available resources and without any special privilege.
+Many solutions are available to work with containers, for example Docker, one of the most popular platforms. However, the enterprise-based container frameworks were motivated to provide micro-services, a solution that fits well in the models of the industry, where system administrators with root privilege install and run applications, each in its own container. This is not so compatible with the workflow in High-Performance Computing (HPC) and High Throughput Computing (HTC), in which usually complex applications run exhaustively using all the available resources and without any special privilege.
 
 Apptainer/Singularity is a container platform created for the HPC/HTC use case. It allows users to build and run containers with just a few steps in most of the cases, and its design presents key concepts for the scientific community:
 
@@ -52,6 +48,10 @@ Apptainer/Singularity is a container platform created for the HPC/HTC use case. 
 - Ability to run, and in modern systems also to be installed, without any root daemon or setuid privileges. This makes it safer for large computer centers with shared resources.
 - Preserves the permissions in the environment. The user outside the container can be the same user inside.
 - Simple integration with resource managers and distributed computing frameworks because it runs as a regular application.
+
+> ## What about virtual machines?
+> Virtual Machines (VMs) provide the same isolation and reproducibility. However, they emulate the hardware, so they are computationally heavier to run, require bigger files when distributed and are less flexible than containers, that run only what you require to be different.
+{: .callout}
 
 ## Apptainer vs Singularity
 In these lessons you see the name *Apptainer* or *Apptainer/Singularity*, and the command `apptainer`.
