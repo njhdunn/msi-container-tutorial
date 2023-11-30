@@ -17,17 +17,12 @@ Running containers from the available public images is not the only option. In m
 an image or even to create a new one from scratch. For such purposes, Apptainer provides the command `build`,
 defined in the documentation as the _Swiss army knife_ of container creation.
 
-The usual workflow is to prepare and test a container in a build environment (like your laptop),
-either with an interactive session or from a definition file,
-and then to deploy the container into a production environment for execution (as your institutional cluster).
-Interactive sessions are great to experiment and test your new container.
+The usual workflow is to prepare and test a container in a build environment (like an interactive SLURM job),
+either with an interactive sandbox or from a definition file,
+and then to deploy the container into a production environment for execution.
+Interactive sandboxes are great to experiment and test your new container.
 If you want to distribute the container or use it in production, then we recommend to build it from a definition file, as described in the next episode.
 This ensures the greatest possibility of reproducibility and transparency.
-
-<figure>
-  <img src="https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0177459.g001" alt="Apptainer/Singularity usage workflow"/>
-  <figcaption>'Apptainer/Singularity usage workflow' via <i>Kurtzer GM, Sochat V, Bauer MW (2017) Singularity: Scientific containers for mobility of compute. PLoS ONE 12(5): e0177459. <a href="https://doi.org/10.1371/journal.pone.0177459">https://doi.org/10.1371/journal.pone.0177459</a></i></figcaption>
-</figure>
 
 ## Build a container in an interactive session
 
