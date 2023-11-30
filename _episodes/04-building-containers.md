@@ -113,7 +113,7 @@ chmod -R a=rwX myUbuntu
 ```
 
 Now, open an interactive session with your user (no `--fakeroot`). You can use now the container with hmmer ready in a
-few steps. Let's check by printing the help documentation for `nhmmer
+few steps. Let's check by printing the help documentation for `nhmmer`:
 
 ```bash
 apptainer shell myUbuntu
