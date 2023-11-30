@@ -6,7 +6,7 @@ exercises: 20
 questions:
 - "What is Apptainer/Singularity and why might I want to use it?"
 - "What issues motivated the creation of Apptainer/Singularity?"
-- "What are the differences between Docker, Apptainer and Singularity?"
+- "What are the differences between Docker, Apptainer, and Singularity?"
 objectives:
 - "Understand what Apptainer/Singularity is and when you might want to use it."
 - "Learn the design goals behind Apptainer/Singularity."
@@ -17,10 +17,10 @@ keypoints:
 ---
 
 
-# Apptainer/Singularity
+## What is it?
 Apptainer/Singularity is a container platform that allows software engineers and researchers to easily share their work with others by packaging and deploying their software applications in a portable and reproducible manner. 
 
-When you download a Singularity container image, you essentially receive a virtual computer disk that contains all of the necessary software, libraries and configuration to run one or more applications or undertake a particular task, e.g. to support a specific research project. 
+When you download an Apptainer container image, you essentially receive a virtual computer disk that contains all of the necessary software, libraries and configuration to run one or more applications or undertake a particular task, e.g. to support a specific research project. 
 
 This saves you the time and effort of installing and configuring software on your own system or setting up a new computer from scratch, as you can simply run a Singularity container from the image and have a virtual environment that is identical to the one used by the person who created the image. 
 
@@ -32,9 +32,10 @@ This saves you the time and effort of installing and configuring software on you
 > A **_container_** is a virtual environment that is based on an image. That is, the files, applications, tools, etc that are available within a running container are determined by the image that the container is started from. It may be possible to start multiple container instances from an image. You could, perhaps, consider an image to be a form of template from which running container instances can be started.
 {: .callout}
 
-Container platforms like Singularity provide a convenient and consistent way to access and run software and tools. Singularity is increasingly widely used in the research community for supporting research projects as it allows users to isolate their software environments from the host operating system and can simplify tasks such as running multiple experiments simultaneously.
+## Why use it?
+Container platforms like Apptainer provide a convenient and consistent way to access and run software and tools. Apptainer is increasingly widely used in the research community for supporting research projects as it allows users to isolate their software environments from the host operating system and can simplify tasks such as running multiple experiments simultaneously.
 
-Concepts such as reproducibility, preservation, and distribution are important in the HPC community, and the containers provide a solution totally compatible with such concepts:
+Concepts such as reproducibility, preservation, and distribution are important in the HPC community, and containers provide a solution totally compatible with such concepts:
 
 - The version of some specific software used to perform an analysis can be preserved in a container with exactly the same environment used at that time.
 - A "legacy software" with binaries only available for an outdated OS can be executed inside a container.
