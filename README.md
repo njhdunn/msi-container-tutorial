@@ -1,14 +1,15 @@
-# Reproducible computational environments using containers: Introduction to Singularity
+# Reproducible computational environments using containers: Introduction to Apptainer/Singularity
 
-This lesson provides an introduction to the [Singularity container platform](https://github.com/hpcng/singularity).
+This lesson provides an introduction to the [Apptainer/Singularity container platform](https://apptainer.org).
 
 It covers the basics of using Singularity and creating containers:
 
- - What is Singularity?
- - Installing/running Singularity on the command line
+ - What is Apptainer/Singularity?
+ - Running Apptainer/Singularity on the command line
  - Running containers
- - Creating Singularity images
- - Running an MPI parallel application from a Singularity container
+ - Creating Apptainer/Singularity images
+ - Running an MPI parallel application from an Apptainer/Singularity container
+ - Running instance-based container workflows
 
 ## Contributing
 
