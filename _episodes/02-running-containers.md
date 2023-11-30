@@ -18,7 +18,7 @@ keypoints:
 ---
 
 ## Apptainer is a Module at MSI
-MSI provides a modulefile for Singularity and Apptainer. Currently we provide this module under both naming conventions, so you can load either of them by running the equivalent commands:
+MSI provides a modulefile for Singularity and Apptainer. Currently we provide this module under both naming conventions, so you can load it by running either of the equivalent commands:
 
 ```bash
 module load apptainer
