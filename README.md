@@ -2,7 +2,7 @@
 
 This lesson provides an introduction to the [Apptainer/Singularity container platform](https://apptainer.org).
 
-It covers the basics of using Singularity and creating containers:
+It covers the basics of using Apptainer/Singularity and creating containers:
 
  - What is Apptainer/Singularity?
  - Running Apptainer/Singularity on the command line
